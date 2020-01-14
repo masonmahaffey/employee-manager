@@ -1,0 +1,83 @@
+/**
+ * React Starter Kit (https://www.reactstarterkit.com/)
+ *
+ * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+
+@import '../../components/variables.css';
+
+
+.root {
+  padding-top: 10px;
+}
+
+.editBtn {
+  border-radius: 0px;
+  height: 30px;
+  float: right;
+}
+
+.addRemarkBtn {
+  margin-bottom: 15px;
+  border-radius: 0px;
+  height: 30px;
+  float: right;
+}
+
+.removeEmployeeButton {
+  border-radius: 0px;
+}
+
+@keyframes backToEmployeesButtonArrow {
+  0%   {
+    left: 0px;
+  }
+  50% {
+    left: 5px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+.backToEmployeesButtonArrow {
+  position: relative;
+  margin-right: 5px;
+  font-size: 40px;
+  animation-name: backToEmployeesButtonArrow;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  color: #007bff;
+}
+
+.backToEmployeesButtonArrow:hover {
+  color: #333;
+  cursor: pointer;
+}
+
+.chartWrapper {
+  /*float: right;*/
+}
+
+.employeeDetail {
+  margin-top: 40px;
+  font-weight: bold;
+  min-width: 100px;
+}
+
+.removeEmployeeButton:hover > i {
+  cursor: pointer;
+}
+
+.editUserBtn {
+  color: white;
+  font-weight: bold;
+  margin-left: 7px;
+}
+
+.editUserBtn:hover {
+  cursor: pointer;
+}

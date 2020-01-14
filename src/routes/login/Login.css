@@ -11,12 +11,14 @@
 .root {
   padding-left: 20px;
   padding-right: 20px;
+  min-height: 95vh;
 }
 
 .container {
   margin: 0 auto;
   padding: 0 0 40px;
   max-width: 380px;
+  padding-top: 10vh;
 }
 
 .lead {
@@ -28,6 +30,7 @@
 }
 
 .label {
+  color: #717171;
   display: block;
   font-weight: 700;
 }
@@ -62,9 +65,9 @@
   padding: 10px 16px;
   width: 100%;
   outline: 0;
-  border: 1px solid #373277;
+  border: 1px solid #007bff;
   border-radius: 0;
-  background: #373277;
+  background: #007bff;
   color: #fff;
   text-align: center;
   text-decoration: none;
@@ -74,7 +77,7 @@
 }
 
 .button:hover {
-  background: rgba(54, 50, 119, 0.8);
+  background: #003874;
 }
 
 .button:focus {
@@ -86,10 +89,13 @@
   border-color: #3b5998;
   background: #3b5998;
   composes: button;
+  text-decoration: none;
 }
 
 .facebook:hover {
   background: #2d4373;
+  text-decoration: none;
+  color: white;
 }
 
 .google {
@@ -100,6 +106,8 @@
 
 .google:hover {
   background: #c23321;
+  text-decoration: none;
+  color: white;
 }
 
 .twitter {
@@ -110,6 +118,8 @@
 
 .twitter:hover {
   background: #2795e9;
+  text-decoration: none;
+  color: white;
 }
 
 .icon {

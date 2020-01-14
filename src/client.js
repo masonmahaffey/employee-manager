@@ -35,7 +35,7 @@ const context = {
   // Universal HTTP client
   fetch: createFetch(fetch, {
     baseUrl: window.App.apiUrl,
-  }),
+  })
 };
 
 const container = document.getElementById('app');

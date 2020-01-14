@@ -1,0 +1,275 @@
+/**
+ * React Starter Kit (https://www.reactstarterkit.com/)
+ *
+ * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+
+@import '../../components/variables.css';
+
+.root {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 200px;
+  padding-top: 50px;
+  min-height: 90.3vh;
+}
+
+@keyframes rocket {
+  0%   {
+    bottom: -100px;
+    left: 40vw;
+  }
+  100% {
+    bottom: 180vh;
+    left: -30vw;
+  }
+}
+
+.tr {
+  cursor: pointer;
+}
+
+.tableToggles {
+  /*margin-right: 10px;*/
+  border-radius: 0px;
+  /*margin-bottom: 25px;*/
+  width: 25%;
+}
+
+.addEmployeeButton {
+  border-radius: 0px;
+  float: right;
+  margin-bottom: 25px;
+}
+
+.removeEmployeeButton {
+  position: relative;
+  right: -14px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 900;
+}
+
+.rocketShip {
+  position: absolute;
+  height: 100px;
+
+
+  animation-name: rocket;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  z-index: 99999;
+}
+
+.catchLine {
+  color: #007bff;
+  text-align: center;
+  font-weight: bold;
+}
+
+.catchLine2 {
+  color: #007bff;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.infoGraphic {
+  background-image: url("/graphic2.svg");
+  height: 500px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 600px;
+}
+
+.infoGraphic2 {
+  width: 400px;
+}
+
+.graphicRow {
+  width: 100%;
+}
+
+.graphicColumn {
+  width: 33%;
+  display: inline;
+}
+
+.graphicRowImage {
+  display: inline;
+}
+
+.catchLineRow {
+  margin-top: 200px;
+}
+
+.graphicText {
+  display: block;
+  word-break: break-all;
+  font-weight: bold;
+  font-family: "Andale Mono";
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 0 40px;
+  max-width: var(--max-content-width);
+  min-height: 800px;
+}
+
+
+.newsItem {
+  margin: 0 0 2rem;
+}
+
+.newsTitle {
+  font-size: 1.5rem;
+}
+
+.newsDesc h1,
+.newsDesc h2,
+.newsDesc h3,
+.newsDesc h4,
+.newsDesc h5,
+.newsDesc h6 {
+  font-size: 1.125rem;
+}
+
+.newsDesc pre {
+  white-space: pre-wrap;
+  font-size: 0.875rem;
+}
+
+.newsDesc img {
+  max-width: 100%;
+}
+
+body {
+  background-color: white !important;
+}
+
+
+
+button.exit-button {
+  position: fixed;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  background: none;
+  font-size: 0;
+  border: none;
+  padding: 20px;
+  pointer-events: none;
+  touch-action: none;
+  z-index: 999999;
+  cursor: pointer;
+}
+button.exit-button:active svg {
+  opacity: 0.5;
+}
+button.exit-button.exit-button--showing {
+  opacity: 1;
+  pointer-events: initial;
+  touch-action: initial;
+}
+
+button.button {
+  position: relative;
+  border: none;
+  background: none;
+  color: #fff;
+  font-weight: 700;
+  padding: 15px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 100ms ease-out;
+}
+button.button::before,
+button.button::after {
+  position: absolute;
+  content: "";
+}
+button.button::before {
+  background: #ffa183;
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+button.button:hover {
+  transform: translateY(-1px);
+}
+button.button:active {
+  transform: translateY(1px);
+}
+
+div.content {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+div.background-1 {
+  height: 80vh;
+  background: #3732ff;
+}
+
+div.background-2 {
+  height: 80vh;
+  background: #fed67d;
+}
+
+div.background-3 {
+  height: 80vh;
+  background: #013540;
+}
+
+div.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 250ms ease 250ms;
+  pointer-events: none;
+  touch-action: none;
+  z-index: 9;
+}
+div.modal-bg.modal-bg--open {
+  opacity: 1;
+  pointer-events: initial;
+  touch-action: initial;
+  transition: opacity 250ms ease;
+}
+
+div.modal-content {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(188, 193, 217, 0.22),
+  0 4px 12px rgba(188, 193, 217, 0.25);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  opacity: 0;
+  transition: transform 250ms ease-out, opacity 200ms ease-out;
+}
+
+div.modal-content.modal-content--show {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+

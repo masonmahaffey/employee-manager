@@ -10,12 +10,26 @@
 @import '../variables.css';
 
 :root {
-  --brand-color: #61dafb;
+  --brand-color: #007bff;
 }
 
 .root {
-  background: #373277;
+  background: white;
   color: #fff;
+}
+
+.topBar {
+  height: 30px;
+  background-color: #007bff;
+}
+
+.topBarText {
+  text-align: center;
+  font-size: 10px;
+  position: relative;
+  top: 8px;
+  color: white;
+  font-weight: bold;
 }
 
 .container {
@@ -27,11 +41,53 @@
 .brand {
   color: color(var(--brand-color) lightness(+10%));
   text-decoration: none;
-  font-size: 1.75em; /* ~28px */
+  font-size: 22px; /* ~28px */
+  font-weight: 500;
+}
+
+.brand:hover {
+  text-decoration: none;
+  color: #464646;
 }
 
 .brandTxt {
   margin-left: 10px;
+  color: #007bff;
+}
+
+.brandTxtAlt {
+  color: rgba(20, 20, 20, 0.6);
+  font-style: italic;
+}
+
+.brandTxtAlt:hover, .brandTxt:hover > .brandTxtAlt, .brandTxt:hover > .beta {
+  color: black;
+}
+
+
+
+@keyframes beta {
+  0%   {
+    font-size: 8px;
+  }
+  50% {
+    font-size: 11px;
+  }
+  100% {
+    font-size: 8px;
+  }
+}
+
+.beta {
+  position: relative;
+  top: -10px;
+  left: 5px;
+  animation-name: beta;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  z-index: 99999;
+  transform: rotate(40deg);
+  color: #333333;
 }
 
 .banner {

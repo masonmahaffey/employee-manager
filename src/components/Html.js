@@ -33,8 +33,11 @@ export default function Html({
         {scripts.map(script => (
           <link key={script} rel="preload" href={script} as="script" />
         ))}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="apple-touch-icon" href="/icon.png" />
+
         {styles.map(style => (
           <style
             key={style.id}
@@ -45,6 +48,9 @@ export default function Html({
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
+
+        <div id={"modal-root"}>
+        </div>
         <script
           dangerouslySetInnerHTML={{ __html: `window.App=${serialize(app)}` }}
         />
@@ -67,6 +73,12 @@ export default function Html({
             defer
           />
         )}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossOrigin="anonymous"></script>
       </body>
     </html>
   );

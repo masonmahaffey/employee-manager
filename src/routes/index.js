@@ -7,6 +7,8 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+import React from 'react';
+
 /* eslint-disable global-require */
 
 // The top-level (parent) route
@@ -18,6 +20,23 @@ const routes = {
     {
       path: '',
       load: () => import(/* webpackChunkName: 'home' */ './home'),
+    },
+    {
+      path: '/employees',
+      children: [
+        {
+          path: '',
+          load: () => import(/* webpackChunkName: 'home' */ './employees')
+        },
+        {
+          path: '/:id',
+          load: () => import('./employee')
+        }
+      ]
+    },
+    {
+      path: '/settings',
+      load: () => import('./settings')
     },
     {
       path: '/contact',
@@ -51,13 +70,14 @@ const routes = {
     },
   ],
 
-  async action({ next }) {
+  async action({ next, context }) {
     // Execute each child route until one of them return the result
     const route = await next();
 
     // Provide default values for title, description etc.
-    route.title = `${route.title || 'Untitled Page'} - www.reactstarterkit.com`;
+    route.title = `${route.title || 'Untitled Page'}`;
     route.description = route.description || '';
+    route.params = context;
 
     return route;
   },
@@ -72,3 +92,21 @@ if (__DEV__) {
 }
 
 export default routes;
+
+
+// {
+//   // const id = params.id;
+//   // console.log('--------')
+//   // console.log(id);
+//   // return {redirect: '/'} //<-- works for redirects
+//
+//
+//   // return {
+//   //   title: 'Hello!',
+//   //   component: (
+//   //     <>
+//   //       <h1>Hello! {id}</h1>
+//   //     </>
+//   //   )
+//   // }
+// }

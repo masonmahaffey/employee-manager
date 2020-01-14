@@ -1,0 +1,119 @@
+/**
+ * React Starter Kit (https://www.reactstarterkit.com/)
+ *
+ * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+
+@import '../variables.css';
+
+:root {
+  --brand-color: #007bff;
+}
+
+.root {
+  background: white;
+  color: #fff;
+}
+
+.topBar {
+  height: 30px;
+  background-color: #007bff;
+}
+
+.topBarText {
+  text-align: center;
+  font-size: 10px;
+  position: relative;
+  top: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+.hamburger {
+  color: black;
+  padding: 7px;
+  border: 1px solid black;
+  margin-right: 10px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 20px 0;
+  /*max-width: var(--max-content-width);*/
+}
+
+
+
+.brand {
+  color: color(var(--brand-color) lightness(+10%));
+  text-decoration: none;
+  font-size: 22px; /* ~28px */
+  font-weight: 500;
+}
+
+.brand:hover {
+  text-decoration: none;
+  color: #464646;
+}
+
+.brandTxt {
+  margin-left: 10px;
+  color: #007bff;
+}
+
+.brandTxtAlt {
+  color: rgba(20, 20, 20, 0.6);
+  font-style: italic;
+}
+
+.brandTxtAlt:hover, .brandTxt:hover > .brandTxtAlt, .brandTxt:hover > .beta {
+  color: black;
+}
+
+
+
+@keyframes beta {
+  0%   {
+    font-size: 8px;
+  }
+  50% {
+    font-size: 11px;
+  }
+  100% {
+    font-size: 8px;
+  }
+}
+
+.beta {
+  position: relative;
+  top: -10px;
+  left: 5px;
+  animation-name: beta;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  z-index: 99999;
+  transform: rotate(40deg);
+  color: #333333;
+}
+
+.banner {
+  text-align: center;
+}
+
+.bannerTitle {
+  margin: 0;
+  padding: 10px;
+  font-weight: normal;
+  font-size: 4em;
+  line-height: 1em;
+}
+
+.bannerDesc {
+  padding: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.25em;
+  margin: 0;
+}

@@ -9,6 +9,8 @@
 
 /* eslint-disable max-len */
 
+require('dotenv').config();
+
 if (process.env.BROWSER) {
   throw new Error(
     'Do not import `config.js` from inside the client-side code.',
@@ -35,6 +37,9 @@ module.exports = {
   // Database
   databaseUrl: process.env.DATABASE_URL || 'sqlite:database.sqlite',
 
+  database: process.env.DATABASE || null,
+  database_name: process.env.DATABASE_NAME || 'codingchallenge',
+
   // Web analytics
   analytics: {
     // https://analytics.google.com/
@@ -43,7 +48,7 @@ module.exports = {
 
   // Authentication
   auth: {
-    jwt: { secret: process.env.JWT_SECRET || 'React Starter Kit' },
+    jwt: { secret: process.env.JWT_SECRET || 'EmployeeManager' },
 
     // https://developers.facebook.com/
     facebook: {

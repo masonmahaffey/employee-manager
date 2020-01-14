@@ -7,17 +7,28 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+// needed to define the type for the GraphQL
 import UserType from '../types/UserType';
+import User from "../models/User";
+import {GraphQLInt, GraphQLString} from 'graphql';
+import { uuid} from "uuidv4";
 
 const me = {
   type: UserType,
-  resolve({ request }) {
-    return (
-      request.user && {
-        id: request.user.id,
-        email: request.user.email,
+  args: {
+    id: { type: GraphQLString }
+  },
+  async resolve(request, {id}) {
+    const user = await User.findOne({
+      where: {
+        id: id
       }
-    );
+    });
+
+    return ({
+      email: user.email,
+      id: user.id
+    });
   },
 };
 

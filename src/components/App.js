@@ -12,6 +12,9 @@ import PropTypes from 'prop-types';
 
 import StyleContext from 'isomorphic-style-loader/StyleContext';
 import ApplicationContext from './ApplicationContext';
+// import {useUser} from './context/auth'
+// const AuthenticatedApp = React.lazy(() => import('./authenticated-app'))
+// const UnauthenticatedApp = React.lazy(() => import('./unauthenticated-app'))
 
 /**
  * The top-level React component setting context (global) variables
@@ -39,6 +42,8 @@ import ApplicationContext from './ApplicationContext';
 export default function App({ context, insertCss, children }) {
   // NOTE: If you need to add or modify header, footer etc. of the app,
   // please do that inside the Layout component.
+
+  context.store = [];
   return (
     <StyleContext.Provider value={{ insertCss }}>
       <ApplicationContext.Provider value={{ context }}>
