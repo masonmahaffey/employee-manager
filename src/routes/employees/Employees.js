@@ -10,13 +10,19 @@ import cx from "classnames";
 import {Link} from "@material-ui/core";
 
 
-export default function Employees({ params, _employees }) {
+export default function Employees({ params, _employees, addEmpoyee, fetch }) {
   const [showDelete, setShowDelete] = useState(true);
   const [showFilters, setShowFilters] = useState(true);
   const [showAddEmployee, setShowAddEmployee] = useState(false);
   const [showEditEmployee, setShowEditEmployee] = useState(false);
   const [appInitialized, setAppInitialized] = useState(0);
   const [employees, setEmployees] = useState(_employees);
+  // add employee inputs
+  const [employeeEmail, setEmployeeEmail] = useState("");
+  const [employeeFirstName, setEmployeeFirstName] = useState("");
+  const [employeeLastName, setEmployeeLastName] = useState("");
+  const [employeeDepartment, setEmployeeDepartment] = useState("");
+
 
 
   const toggleShowEmployee = () => {
@@ -43,7 +49,43 @@ export default function Employees({ params, _employees }) {
     }
   };
 
+  const addEmployee = async () => {
+    // make a mutation and send the employee info to the backend
+    const resp = await fetch('/graphql', {
+      body: JSON.stringify({
+        query: `
+              mutation {
+                createEmployee(
+                  email: "${employeeEmail}",
+                  firstName: "${employeeFirstName}",
+                  lastName: "${employeeLastName}",
+                  department: "${employeeDepartment}") {
+                  firstName
+                }
+              }
+            `,
+      }),
+    });
+    const { data } = await resp.json();
 
+    setEmployees(employees.concat({
+      firstName: employeeFirstName,
+      lastName: employeeLastName,
+      email: employeeEmail,
+      department: employeeDepartment,
+      addEmployee: false
+    }));
+
+  };
+
+  const filter = (key, filter) => {
+    if(filter.length > 0) {
+      var filteredEmployees = _employees.filter(employee => employee[key].toLowerCase().includes(filter.toLowerCase()));
+      setEmployees(filteredEmployees)
+    } else {
+      setEmployees(_employees);
+    }
+  };
 
   useStyles(s);
   return (
@@ -87,16 +129,16 @@ export default function Employees({ params, _employees }) {
           { showFilters ? (
             <tr>
               <th>
-                <input type="text" className="form-control" placeholder="filter"/>
+                <input onChange={e => filter('firstName', e.target.value)} type="text" className="form-control" placeholder="filter"/>
               </th>
               <th>
-                <input type="text" className="form-control" placeholder="filter"/>
+                <input onChange={e => filter('lastName', e.target.value)} type="text" className="form-control" placeholder="filter"/>
               </th>
               <th>
-                <input type="text" className="form-control" placeholder="filter"/>
+                <input onChange={e => filter('email', e.target.value)} type="text" className="form-control" placeholder="filter"/>
               </th>
               <th>
-                <input type="text" className="form-control" placeholder="filter"/>
+                <input onChange={e => filter('department', e.target.value)} type="text" className="form-control" placeholder="filter"/>
               </th>
               {showDelete ? (<th></th>) : showAddEmployee ? (<th></th>): (null)}
               {}
@@ -132,19 +174,19 @@ export default function Employees({ params, _employees }) {
                 return (
                   <tr className={s.tr}>
                     <td>
-                      <input type="text" className="form-control" placeholder="First name"/>
+                      <input onChange={e => setEmployeeFirstName(e.target.value)} value={employeeFirstName}  type="text" className="form-control" placeholder="First name"/>
                     </td>
                     <td>
-                      <input type="text" className="form-control" placeholder="Last name"/>
+                      <input  onChange={e => setEmployeeLastName(e.target.value)} value={employeeLastName}  type="text" className="form-control" placeholder="Last name"/>
                     </td>
                     <td>
-                      <input type="text" className="form-control" placeholder="Email"/>
+                      <input onChange={e => setEmployeeEmail(e.target.value)} value={employeeEmail} type="text" className="form-control" placeholder="Email"/>
                     </td>
                     <td>
-                      <input type="text" className="form-control" placeholder="Department"/>
+                      <input onChange={e => setEmployeeDepartment(e.target.value)} value={employeeDepartment}  type="text" className="form-control" placeholder="Department"/>
                     </td>
                     <td>
-                      {showAddEmployee ? (<button className={cx("btn btn-success btn-sm", s.removeEmployeeButton)}>+</button>) : (null)}
+                      {showAddEmployee ? (<button onClick={() => addEmployee()} className={cx("btn btn-success btn-sm", s.removeEmployeeButton)}>+</button>) : (null)}
                     </td>
                   </tr>
                 )

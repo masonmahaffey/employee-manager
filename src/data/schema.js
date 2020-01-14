@@ -9,7 +9,7 @@ import {
 
 import me from './queries/me';
 import news from './queries/news';
-import createUser from "./mutations/createUser";
+import createEmployee from "./mutations/createEmployee";
 import employee from './queries/employee';
 import employees from "./queries/employees";
 
@@ -28,7 +28,7 @@ const schema = new Schema({
     name: 'Mutation',
     description: 'These are the things we can change',
     fields: {
-      createUser
+      createEmployee
     }
   })
 });

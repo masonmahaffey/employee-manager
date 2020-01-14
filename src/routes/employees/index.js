@@ -44,7 +44,7 @@ async function action({ fetch, params }) {
     component: (
       <>
         <DashboardLayout path={"/employees"}>
-          <Employees _employees={data.employees} params={params} />
+          <Employees fetch={fetch} _employees={data.employees} params={params} />
         </DashboardLayout>
       </>
     ),

@@ -70,6 +70,19 @@ const DB = {
         }
       });
     });
+  },
+
+  create:  (connection, insert) => {
+    return new Promise((resolve, reject) => {
+      connection.collection("employee").insertOne(insert, (err, result) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          console.log(err);
+          reject();
+        }
+      });
+    });
   }
 };
 
